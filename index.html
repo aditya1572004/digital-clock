@@ -1,0 +1,78 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #0c0f14; 
+            /*background: url('6c2d97bbe6cb24dd64a57a217f721575 (1).jpg') no-repeat center center fixed;*/
+            background-size: cover;
+
+        }
+
+        .clock {
+            text-align: center;
+            color: #00ffff; 
+            font-family: 'Courier New', Courier, monospace; 
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.8); 
+        }
+
+        #date {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        #time {
+            font-size: 4em;
+            letter-spacing: 5px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <p id="date"></p>
+        <p id="time"></p>
+    </div>
+
+    <script>
+        const WEEK = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+        function updateTime() {
+            var now = new Date();
+            
+            // Get hours, convert to 12-hour format
+            var hours = now.getHours();
+            var ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // If hour is 0, set it to 12 (midnight or noon)
+
+            // Display time in HH:MM:SS format with AM/PM
+            document.getElementById("time").innerText =
+                zeroPadding(hours, 2) + ":" +
+                zeroPadding(now.getMinutes(), 2) + ":" +
+                zeroPadding(now.getSeconds(), 2) + " " + ampm;
+
+            // Display date in YYYY-MM-DD DAY format
+            document.getElementById("date").innerText =
+                now.getFullYear() + "-" +
+                zeroPadding(now.getMonth() + 1, 2) + "-" +
+                zeroPadding(now.getDate(), 2) + " " +
+                WEEK[now.getDay()];
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        function zeroPadding(num, digit) {
+            return String(num).padStart(digit, '0');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #0c0f14; /* Dark background */
+}
+
+.clock {
+    text-align: center;
+    color: #00ffff; /* Light cyan text color matching the image */
+    font-family: 'Courier New', Courier, monospace; /* Monospace font */
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.8); /* Glowing effect */
+}
+
+#date {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+#time {
+    font-size: 4em;
+    letter-spacing: 5px; /* Spacing between numbers */
+}
